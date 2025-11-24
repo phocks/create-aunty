@@ -1,0 +1,9 @@
+{
+  "name": "create-aunty",
+  "version": "0.0.1",
+  "bin": "bin/index.js",
+  "type": "module",
+  "dependencies": {
+    "@clack/prompts": "^0.11.0"
+  }
+}
