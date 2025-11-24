@@ -2,7 +2,7 @@
 
 import { intro, outro, isCancel, cancel, text, select } from "@clack/prompts";
 
-intro(`create-my-app`);
+intro(`create-aunty`);
 
 const meaning = await text({
   message: "What is the meaning of life?",
