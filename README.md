@@ -1,17 +1,23 @@
-# create-aunty
+# tsdown-starter
 
-A newer method of creating aunty projects
+A starter for creating a TypeScript package.
 
-## Usage
+## Development
 
-```sh
-npx create aunty
+- Install dependencies:
+
+```bash
+npm install
 ```
 
-## License
+- Run the unit tests:
 
-MIT
+```bash
+npm run test
+```
 
-## Author
+- Build the library:
 
-Joshua Byrd <byrd.joshua@abc.net.au>
+```bash
+npm run build
+```
