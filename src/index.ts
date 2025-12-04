@@ -38,9 +38,7 @@ if (isCancel(directory)) {
 // Ask for project type (maps to folder names in /templates)
 const projectType = await select({
   message: "Pick a template.",
-  options: [
-    { value: "default", label: "Default" },
-  ],
+  options: [{ value: "default", label: "Default" }],
 });
 
 if (isCancel(projectType)) {
@@ -48,22 +46,19 @@ if (isCancel(projectType)) {
   process.exit(0);
 }
 
-// Perform the copy
-const s = spinner();
-s.start(`Creating project in ${color.cyan(directory as string)}...`);
+const spin = spinner();
+spin.start(`Creating project in ${color.cyan(directory as string)}...`);
 
 const targetDir = path.resolve(process.cwd(), directory as string);
 const sourceDir = path.join(templateRoot, projectType as string);
 
-// Safety check
 if (!fs.existsSync(sourceDir)) {
-  s.stop("Failed.");
+  spin.stop("Failed.");
   cancel(`Template "${projectType}" not found in ${sourceDir}`);
   process.exit(1);
 }
 
 try {
-  // Copy files
   await fs.copy(sourceDir, targetDir);
 
   // Rename _gitignore -> .gitignore
@@ -80,13 +75,13 @@ try {
     await fs.writeJson(pkgPath, pkg, { spaces: 2 });
   }
 
-  s.stop(`Created project in ${color.cyan(directory as string)}`);
+  spin.stop(`Created project in ${color.cyan(directory as string)}`);
 
   outro(
-    `You're all set! \n\nRun:\n  cd ${directory}\n  npm install\n  npm start`,
+    `You're all set! \n\nRun:\n  cd ${directory}\n  npm install\n  npm start`
   );
 } catch (error) {
-  s.stop("Failed.");
+  spin.stop("Failed.");
   cancel("Error creating project: " + (error as Error).message);
   process.exit(1);
 }
