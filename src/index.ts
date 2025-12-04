@@ -38,7 +38,7 @@ if (isCancel(directory)) {
 // Ask for project type (maps to folder names in /templates)
 const projectType = await select({
   message: "Pick a template.",
-  options: [{ value: "default", label: "Default" }],
+  options: [{ value: "svelte", label: "Svelte" }],
 });
 
 if (isCancel(projectType)) {
