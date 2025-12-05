@@ -89,7 +89,7 @@ try {
   spin.stop(`Created project in ${color.cyan(directory as string)}`);
 
   outro(
-    `You're all set! \n\nRun:\n  cd ${directory}\n  npm install\n  npm start`
+    `You're all set! \n\nRun:\n  cd ${directory}\n  npm install\n  npm run dev`
   );
 } catch (error) {
   spin.stop("Failed.");
