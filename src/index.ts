@@ -23,8 +23,8 @@ intro(color.bgCyan(color.black(" create-aunty ")));
 // Ask for project directory
 const directory = await text({
   message: "Where should we create your new project?",
-  placeholder: "./my-new-project",
-  initialValue: "my-new-project",
+  placeholder: "./new-aunty-project",
+  initialValue: "new-aunty-project",
   validate(value) {
     if (value.length === 0) return `Directory name is required!`;
   },
