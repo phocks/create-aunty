@@ -30,6 +30,7 @@ const directory = await text({
   },
 });
 
+// Handle ctrl+c (cancel)
 if (isCancel(directory)) {
   cancel("Operation cancelled.");
   process.exit(0);
@@ -41,7 +42,6 @@ const projectType = await select({
   options: [{ value: "svelte", label: "Svelte" }],
 });
 
-// Handle ctrl+c
 if (isCancel(projectType)) {
   cancel("Operation cancelled.");
   process.exit(0);
