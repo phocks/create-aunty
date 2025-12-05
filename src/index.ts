@@ -41,6 +41,7 @@ const projectType = await select({
   options: [{ value: "svelte", label: "Svelte" }],
 });
 
+// Handle ctrl+c
 if (isCancel(projectType)) {
   cancel("Operation cancelled.");
   process.exit(0);
@@ -73,6 +74,16 @@ try {
     const pkg = await fs.readJson(pkgPath);
     pkg.name = path.basename(targetDir);
     await fs.writeJson(pkgPath, pkg, { spaces: 2 });
+  }
+
+  // Replace {{PROJECT_DIR}} in vite.config.ts
+  const viteConfigPath = path.join(targetDir, "vite.config.ts");
+  if (fs.existsSync(viteConfigPath)) {
+    let viteConfig = await fs.readFile(viteConfigPath, "utf-8");
+    // Use the directory name (without path) as the project slug
+    const projectSlug = path.basename(targetDir);
+    viteConfig = viteConfig.replace(/\{\{PROJECT_DIR\}\}/g, projectSlug);
+    await fs.writeFile(viteConfigPath, viteConfig);
   }
 
   spin.stop(`Created project in ${color.cyan(directory as string)}`);
