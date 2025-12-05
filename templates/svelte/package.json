@@ -20,6 +20,6 @@
   },
   "dependencies": {
     "@abcnews/env-utils": "^5.0.2",
-    "vite-plugin-script-loader": "^0.0.3"
+    "vite-plugin-script-loader": "^0.0.4"
   }
 }
